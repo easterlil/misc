@@ -53,3 +53,8 @@ def download_models():
         url = base_url + model
         destination = os.path.join(models_dir, model)
         os.system(f"wget {url} -O {destination}")
+
+create_directories()
+separator_dir, models_dir, audio_dir, input_dir, vocals_dir, no_reverb_dir, no_backing_vocals_dir = define_paths()
+download_files()
+download_models()
