@@ -1,6 +1,5 @@
 import os
 import shutil
-from huggingface_hub import hf_hub_download, login, logout
 import subprocess
 
 def create_directories():
