@@ -1,0 +1,181 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Fire Emblem API",
+    "version": "1.0.0",
+    "description": "API for retrieving Fire Emblem character data, user-created world lore, and historical events."
+  },
+  "servers": [
+    {
+      "url": "https://walleye-rapid-freely.ngrok-free.app",
+      "description": "Live API"
+    }
+  ],
+  "paths": {
+    "/seteth": {
+      "get": {
+        "operationId": "getSeteth",
+        "summary": "Retrieve Seteth's data",
+        "responses": {
+          "200": {
+            "description": "Seteth's character data"
+          }
+        }
+      }
+    },
+    "/character/{name}": {
+      "get": {
+        "operationId": "getCharacter",
+        "summary": "Retrieve a canon character",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Character details"
+          }
+        }
+      }
+    },
+    "/user_character/{name}": {
+      "get": {
+        "operationId": "getUserCharacter",
+        "summary": "Retrieve a user-created character",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User character details"
+          }
+        }
+      }
+    },
+    "/user_avatar": {
+      "get": {
+        "operationId": "getUserAvatar",
+        "summary": "Retrieve the user's role-playing character",
+        "responses": {
+          "200": {
+            "description": "User's main character"
+          }
+        }
+      }
+    },
+    "/world_lore/{name}": {
+      "get": {
+        "operationId": "getWorldLore",
+        "summary": "Retrieve world lore details",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "World lore details"
+          }
+        }
+      }
+    },
+    "/timeline/{year}": {
+      "get": {
+        "operationId": "getTimeline",
+        "summary": "Retrieve historical events from a specific year",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Historical events for the year"
+          }
+        }
+      }
+    },
+    "/user_world_lore/{name}": {
+      "get": {
+        "operationId": "getUserWorldLore",
+        "summary": "Retrieve a user-created world lore entry",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User-created world lore entry"
+          }
+        }
+      }
+    },
+    "/name_list": {
+      "get": {
+        "operationId": "getNameList",
+        "summary": "Retrieve all known characters, user characters, and world lore names",
+        "responses": {
+          "200": {
+            "description": "A list of all known names for characters, user characters, and world lore.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "CanonCharacters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "UserCharacters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "WorldLore": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
